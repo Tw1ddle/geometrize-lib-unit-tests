@@ -1,4 +1,4 @@
-#include "../catch.hpp"
+#include "catch.hpp"
 
 #include "geometrize/state.h"
 #include "geometrize/shape/rectangle.h"
