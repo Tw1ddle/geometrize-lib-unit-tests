@@ -8,7 +8,7 @@ This is the unit test suit for the Geometrize library, a C++ library for geometr
 
 The tests are run through CI on Travis and AppVeyor.
 
-[![Geometrized Surfer](https://github.com/Tw1ddle/geometrize-haxe-unit-tests/blob/master/screenshots/surfer_500_triangles.jpg?raw=true "Surfer, 500 triangles")](https://github.com/Tw1ddle/geometrize-lib)
+[![Geometrized Surfer](https://github.com/Tw1ddle/geometrize-lib-unit-tests/blob/master/screenshots/surfer_500_triangles.jpg?raw=true "Surfer, 500 triangles")](https://github.com/Tw1ddle/geometrize-lib)
 
 ## Usage
 
