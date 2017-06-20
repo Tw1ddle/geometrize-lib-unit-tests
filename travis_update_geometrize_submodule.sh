@@ -10,7 +10,7 @@ if [[ `git status --porcelain` ]]; then
   git config --global user.name "Travis CI Bot"
   git checkout master
   git add geometrize
-  git commit --message "Travis bot updating submodule and rebuilding documentation"
+  git commit --message "Travis bot updating submodule and building unit tests"
   git remote rm origin
   git remote add origin https://${GITHUB_API_KEY}@github.com/Tw1ddle/geometrize-lib-unit-tests.git > /dev/null 2>&1
   git push origin master

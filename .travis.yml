@@ -24,8 +24,9 @@ addons:
 install:
   - sudo apt-get install -y qt5-default qttools5-dev-tools
 
-# Build the unit tests
+# Build and run the unit tests
 script:
   - pushd unit
   - qmake unit_test.pro
+  - make
   - popd
