@@ -1,0 +1,50 @@
+environment:
+  matrix:
+  # MSVC 2013 x86
+  - name: win32
+    platform: amd64_x86
+    qt: msvc2013
+
+  # MSVC 2013 x64
+  - name: win64
+    platform: amd64
+    qt: msvc2013_64
+  
+  # MSVC 2015 x86
+  - name: win32
+    platform: amd64_x86
+    qt: msvc2015
+
+  # MSVC 2015 x64
+  - name: win64
+    platform: amd64
+    qt: msvc2015_64
+
+  # MSVC 2017 x64
+  - name: win64
+    platform: amd64
+    qt: msvc2017_64
+
+  # MinGW
+  - name: win32
+    platform: mingw
+    qt: 5.6\mingw49_32
+    suffix: mingw
+
+init:
+  - if not %platform%==mingw call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %platform%
+
+install:
+  -
+
+before_build:
+  -
+
+build_script:
+  - pushd unit
+  - qmake unit_test.pro
+  - make
+  - popd
+
+test_script:
+  -
