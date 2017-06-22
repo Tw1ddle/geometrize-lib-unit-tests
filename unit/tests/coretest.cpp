@@ -20,6 +20,6 @@ geometrize::rgba computeScanlinesColor(const geometrize::rgba targetColor, const
 TEST_CASE("Test computation of scanline color for whole image", "[core]")
 {
     const geometrize::rgba expected{23, 0, 0, 128};
-    const geometrize::rgba result{computeScanlinesColor(geometrize::rgba{12, 12, 12, 0}, geometrize::rgba{0, 212, 62, 0}, 128)};
+    const geometrize::rgba result(computeScanlinesColor(geometrize::rgba{12, 12, 12, 0}, geometrize::rgba{0, 212, 62, 0}, 128));
     REQUIRE(expected == result);
 }
