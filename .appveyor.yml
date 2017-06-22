@@ -19,6 +19,7 @@ install:
 
 # Ensure we have a make tool in the path to call
 init:
+  - '%QTDIR%\bin\qtenv2.bat'
   - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin
   - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
   - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
@@ -27,7 +28,7 @@ init:
 # Build the projects
 build_script:
   - pushd unit
-  - qmake unit_test.pro
+  - qmake -d -Wall unit_test.pro
   - '%make%'
   - popd
 
