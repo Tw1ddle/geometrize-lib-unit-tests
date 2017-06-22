@@ -14,25 +14,30 @@ configuration:
   - release
 
 # Workaround to get the project submodules
-install:
+before_install:
   - git submodule update --init --recursive
 
-# Ensure we have a make tool in the path to call
-init:
+# Set the environment variables and paths to make
+install:
   - '%QTDIR%\bin\qtenv2.bat'
   - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin
-  - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
   - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
+  - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
   - if not %QTDIR:msvc2013=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc2015=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc2017=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 15.0\VC\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
   - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
+# Run qmake
+before_build:
+  - pushd unit
+  - qmake -d -Wall unit_test.pro
+  - popd
+
 # Build the projects
 build_script:
   - pushd unit
-  - qmake -d -Wall unit_test.pro
   - '%make%'
   - popd
 
