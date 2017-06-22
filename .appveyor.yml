@@ -29,15 +29,13 @@ install:
 
 # Run qmake
 before_build:
-  - pushd %APPVEYOR_BUILD_FOLDER%/unit
+  - cd %APPVEYOR_BUILD_FOLDER%/unit
   - qmake -d -Wall unit_test.pro
-  - popd
 
 # Build the projects
 build_script:
-  - pushd %APPVEYOR_BUILD_FOLDER%/unit
+  - cd %APPVEYOR_BUILD_FOLDER%/unit
   - '%make%'
-  - popd
 
 # Run the unit test executable
 test_script:
