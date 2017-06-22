@@ -21,7 +21,11 @@ install:
 init:
   - '%QTDIR%\bin\qtenv2.bat'
   - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin
+  - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
   - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
+  - if not %QTDIR:msvc2013=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %ARCH%
+  - if not %QTDIR:msvc2015=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
+  - if not %QTDIR:msvc2017=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 15.0\VC\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
   - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
