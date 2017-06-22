@@ -26,6 +26,3 @@ build_script:
 
 test_script:
   -
-
-artifacts:
-  -
