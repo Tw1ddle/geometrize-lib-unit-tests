@@ -14,12 +14,18 @@ configuration:
 
 init:
   - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin
+  - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
+  - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
+  - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
 build_script:
   - pushd unit
   - qmake unit_test.pro
-  - make
+  - '%make%'
   - popd
 
 test_script:
+  -
+
+artifacts:
   -
