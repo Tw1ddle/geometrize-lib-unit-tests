@@ -7,7 +7,7 @@
 
 This is the unit test suite for the Geometrize library, a tool for geometrizing images into geometric primitives. The intent is to achieve good test coverage of the codebase, and to add regression tests for fixed bugs.
 
-The test suite uses [Catch](https://github.com/philsquared/Catch), and are run through a CI build bot and static analysis checks.
+The test suite uses [Catch](https://github.com/philsquared/Catch), and is run through a CI build bot and [Coverity Scan](https://scan.coverity.com/projects/geometrize) analysis.
 
 
 [![Geometrized Surfer](https://github.com/Tw1ddle/geometrize-lib-unit-tests/blob/master/screenshots/surfer_500_triangles.jpg?raw=true "Surfer, 500 triangles")](https://github.com/Tw1ddle/geometrize-lib)
