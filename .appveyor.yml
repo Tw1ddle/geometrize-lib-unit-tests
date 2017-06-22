@@ -1,3 +1,4 @@
+# Define the compilers versions we wish to build the unit tests against
 environment:
   matrix:
     - QTDIR: C:\Qt\5.6\mingw49_32
@@ -12,17 +13,27 @@ configuration:
   - debug
   - release
 
+# Workaround to get the project submodules
+install:
+  - git submodule update --init --recursive
+
+# Ensure we have a make tool in the path to call
 init:
   - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin
   - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
   - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
   - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
+# Build the projects
 build_script:
   - pushd unit
   - qmake unit_test.pro
   - '%make%'
   - popd
 
+# Run the unit test executable
 test_script:
   -
+
+# Save the unit test executables
+# TODO
