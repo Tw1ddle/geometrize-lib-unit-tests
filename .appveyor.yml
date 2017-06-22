@@ -30,7 +30,7 @@ install:
 # Run qmake
 before_build:
   - cd %APPVEYOR_BUILD_FOLDER%/unit
-  - qmake -d -Wall unit_test.pro
+  - qmake -Wall unit_test.pro
 
 # Build the projects
 build_script:
