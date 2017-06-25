@@ -9,10 +9,11 @@ env:
   global:
     - secure: O+4RPv9Vh/yAqO/kumLdssGQGDzjpgQjEJbMAI4KKJG5s0IdOkcPfekffeU301czikQTIogbQsH3E9QbkRMbI3J4UKvRdbTpdzb/NjSNUN14qCbxoFhEp85HUCJX2/gUt7XJFsuJM6ZRi9UkFZxTiIrHjYkg1lWVjqO+T3K8TTyq92v00edHYjQnFV6/62fRJmfKUoAa2ExyRpd2f0B+P05mIy0bYktInCEv2ct6E5Rg3aOWf+WokwpP0ox9G66EG1nxM/Uh603OmYve0lXLez4S76KYBbrWbDYpXazsxC9mSCk7l5GQ9h2xpbFVgBrQEanZxyq/0mzY0mfBNDcUMx2KWkQxqSnBMBFWOw3CDZJd5y8PflaTDEOvNtYHEh/CsnAEKpJsxK92gcTi70HN+sIXo3yDNVKyWSP7lYszI95g0xIGny8OW/AHFiBGu0g0MIzv/jK87M06DqnjaRY5MyYwc5pSaH27xpopVMFUDbBxCrneILXxW+po9cBIc26Y7P2SEFoKqd72FLVZt2NYGT48e/eLG6/dYiowqXI83ViptZj5LFJjlxuPrtlfbGhevRMWPzynjAl42R8BAeuQIoZQodPd903DSW3882Lsmszy7Gwpv0Bz+J469kDiFsWP49iROPSXezzmfi65wkoakUWMFP98aSIfYVHFhQIwkgs=
 
-# Get the latest version of the Geometrize library submodule, and push it to the remote (if necessary)
+# Get the latest version of the Geometrize library submodule, and push it to the remote (if necessary), and install codecov
 before_install:
   - chmod +x ./travis_update_geometrize_submodule.sh
   - ./travis_update_geometrize_submodule.sh
+  - sudo pip install codecov
 
 # Install g++
 addons:
@@ -36,11 +37,20 @@ before_install:
   - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
 
-# Install necessary Qt files
+# Install necessary Qt files and code coverage (gcov)
 install:
   - sudo apt-get install -y qt5-default qttools5-dev-tools
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
 
-# Build and run the unit tests
+
+# Build and run the code coverage and unit tests
 script:
   - qmake unit_test.pro
   - make
+  - chmod +x ./get_code_cov.sh
+  - ./get_code_cov.sh
+  - codecov
+
+# Send results to codecov site
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
