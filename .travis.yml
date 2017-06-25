@@ -27,8 +27,8 @@ addons:
       name: "Tw1ddle/geometrize-lib-unit-tests"
       description: "Travis build bot submitting Coverity build"
     notification_email: samcodesit@gmail.com
-    build_command_prepend: "pushd unit"
     build_command_prepend: "qmake unit_test.pro"
+    build_command_prepend: "pushd unit"
     build_command: "make"
     branch_pattern: master
 
