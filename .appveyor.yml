@@ -27,12 +27,12 @@ install:
 
 # Run qmake
 before_build:
-  - cd %APPVEYOR_BUILD_FOLDER%/unit
+  - cd %APPVEYOR_BUILD_FOLDER%
   - qmake -Wall unit_test.pro
 
 # Build the projects
 build_script:
-  - cd %APPVEYOR_BUILD_FOLDER%/unit
+  - cd %APPVEYOR_BUILD_FOLDER%
   - '%make%'
 
 # Run the unit test executable
