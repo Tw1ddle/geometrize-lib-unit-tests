@@ -22,6 +22,14 @@ addons:
     packages:
       - gcc-5
       - g++-5
+  coverity_scan:
+    project:
+      name: "Tw1ddle/geometrize-lib-unit-tests"
+      description: "Travis build bot submitting Coverity build"
+    build_command_prepend: "pushd unit"
+    build_command_prepend: "qmake"
+    build_command: "make"
+    branch_pattern: master
 
 # Install necessary Qt files
 install:
