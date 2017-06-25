@@ -32,6 +32,11 @@ addons:
     build_command: "make"
     branch_pattern: master
 
+before_install:
+  # Coverity Scan
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+
 # Install necessary Qt files
 install:
   - sudo apt-get install -y qt5-default qttools5-dev-tools
