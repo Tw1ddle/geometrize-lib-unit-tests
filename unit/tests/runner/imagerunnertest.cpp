@@ -26,8 +26,7 @@ TEST_CASE("Test default image runner shape scoring is sane", "[imagerunner]")
 
     std::vector<float> scores;
     REQUIRE(results.size() == stepCount);
-    for(int i = 0; i < results.size(); i++) {
-        const geometrize::ShapeResult& result{results[i]};
+    for(const auto& result : results) {
         REQUIRE(result.score >= 0.0f);
         REQUIRE(result.score <= 1.0f);
         scores.push_back(result.score);
