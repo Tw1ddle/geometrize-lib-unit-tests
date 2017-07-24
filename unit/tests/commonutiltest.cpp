@@ -41,4 +41,13 @@ TEST_CASE("Test calculation of average color", "[core]")
         const geometrize::Bitmap image{50, 50, color};
         REQUIRE(color == geometrize::commonutil::getAverageImageColor(image));
     }
+
+    SECTION("Empty image")
+    {
+        const geometrize::rgba color{10, 50, 90, 255};
+        const geometrize::Bitmap image{0, 0, color};
+
+        const geometrize::rgba emptyColor{0, 0, 0, 0};
+        REQUIRE(emptyColor == geometrize::commonutil::getAverageImageColor(image));
+    }
 }
