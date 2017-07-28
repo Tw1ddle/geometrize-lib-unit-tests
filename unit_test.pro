@@ -36,8 +36,9 @@ unix {
     RUN_UNIT_TESTS = $$shell_quote($$shell_path($${TARGET_DIR}/./$${TARGET}$${TARGET_CUSTOM_EXT}))
 }
 
-if(exists($${TARGET_FILE})) {
+exists($${TARGET_FILE}) {
     QMAKE_POST_LINK = $${RUN_UNIT_TESTS}
-} else {
+}
+!exists($${TARGET_FILE}) {
     warning("Failed to run unit tests, maybe the binary was not generated")
 }
