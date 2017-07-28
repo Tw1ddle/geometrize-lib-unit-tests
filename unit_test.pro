@@ -27,8 +27,6 @@ CONFIG(debug, debug|release) {
     TARGET_DIR = $$shell_path($${OUT_PWD}/release)
 }
 
-TARGET_FILE = $$shell_quote($$shell_path($${TARGET_DIR}/$${TARGET}$${TARGET_CUSTOM_EXT}))
-
 win32 {
     RUN_UNIT_TESTS = $$shell_quote($$shell_path($${TARGET_DIR}/$${TARGET}$${TARGET_CUSTOM_EXT}))
 }
@@ -36,9 +34,4 @@ unix {
     RUN_UNIT_TESTS = $$shell_quote($$shell_path($${TARGET_DIR}/./$${TARGET}$${TARGET_CUSTOM_EXT}))
 }
 
-exists($${TARGET_FILE}) {
-    QMAKE_POST_LINK = $${RUN_UNIT_TESTS}
-}
-!exists($${TARGET_FILE}) {
-    warning("Failed to run unit tests, maybe the binary was not generated")
-}
+QMAKE_POST_LINK = $${RUN_UNIT_TESTS}

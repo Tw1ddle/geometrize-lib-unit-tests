@@ -34,10 +34,3 @@ before_build:
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - '%make%'
-
-# Run the unit test executable
-test_script:
-  -
-
-# Save the unit test executable
-# TODO
