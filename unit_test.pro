@@ -27,11 +27,17 @@ CONFIG(debug, debug|release) {
     TARGET_DIR = $$shell_path($${OUT_PWD}/release)
 }
 
+TARGET_FILE = $$shell_quote($$shell_path($${TARGET_DIR}/$${TARGET}$${TARGET_CUSTOM_EXT}))
+
 win32 {
-    TARGET_PATH = $$shell_quote($$shell_path($${TARGET_DIR}/$${TARGET}$${TARGET_CUSTOM_EXT}))
+    RUN_UNIT_TESTS = $$shell_quote($$shell_path($${TARGET_DIR}/$${TARGET}$${TARGET_CUSTOM_EXT}))
 }
 unix {
-    TARGET_PATH = $$shell_quote($$shell_path($${TARGET_DIR}/./$${TARGET}$${TARGET_CUSTOM_EXT}))
+    RUN_UNIT_TESTS = $$shell_quote($$shell_path($${TARGET_DIR}/./$${TARGET}$${TARGET_CUSTOM_EXT}))
 }
 
-QMAKE_POST_LINK = $${TARGET_PATH}
+if(exists($${TARGET_FILE})) {
+    QMAKE_POST_LINK = $${RUN_UNIT_TESTS}
+} else {
+    warning("Failed to run unit tests, maybe the binary was not generated")
+}
