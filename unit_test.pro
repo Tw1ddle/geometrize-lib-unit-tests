@@ -28,4 +28,10 @@ CONFIG(debug, debug|release) {
 }
 
 TARGET_PATH = $$shell_quote($$shell_path($${TARGET_DIR}/$${TARGET}$${TARGET_CUSTOM_EXT}))
-QMAKE_POST_LINK = $${TARGET_PATH}
+
+win32 {
+    QMAKE_POST_LINK = $${TARGET_PATH}
+}
+unix {
+    QMAKE_POST_LINK = ./$${TARGET_PATH}
+}
