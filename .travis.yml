@@ -40,4 +40,5 @@ install:
 # Build and run the unit tests
 script:
   - qmake unit_test.pro
-  - make
+  - pwd
+  - ls -a
