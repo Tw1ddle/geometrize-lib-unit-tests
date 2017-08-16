@@ -10,7 +10,7 @@ SOURCES += unit/main.cpp \
            $$files(unit/tests/*.cpp, true)
 
 # Link in gcov for linux builds (for codecov coverage)
-linux-g++ {
+*-g++ {
     QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
     LIBS += -lgcov
 
