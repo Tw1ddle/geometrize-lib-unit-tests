@@ -4,6 +4,7 @@
 [![Travis Unit Test Build Status](https://img.shields.io/travis/Tw1ddle/geometrize-lib-unit-tests.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/geometrize-lib-unit-tests)
 [![AppVeyor Unit Test Build Status](https://ci.appveyor.com/api/projects/status/github/Tw1ddle/geometrize-lib-unit-tests?branch=master&svg=true)](https://ci.appveyor.com/project/Tw1ddle/geometrize-lib-unit-tests)
 [![Coverity Scan Status](https://scan.coverity.com/projects/12991/badge.svg)](https://scan.coverity.com/projects/geometrize)
+[![codecov Coverage Stats](https://codecov.io/gh/Tw1ddle/geometrize-lib-unit-tests/branch/master/graph/badge.svg)](https://codecov.io/gh/Tw1ddle/geometrize-lib-unit-tests)
 
 This is the unit test suite for the [Geometrize](http://www.geometrize.co.uk/) library, a tool for geometrizing images into geometric primitives. The intent is to achieve good test coverage of the codebase, and to add regression tests for fixed bugs.
 
