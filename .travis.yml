@@ -40,6 +40,7 @@ install:
 script:
   - qmake unit_test.pro
   - make
+  - chmod +x ./get_code_cov.sh
   - ./get_code_cov.sh
 
 # Publish code coverage results
