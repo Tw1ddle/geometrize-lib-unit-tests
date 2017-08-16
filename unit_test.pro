@@ -13,6 +13,10 @@ SOURCES += unit/main.cpp \
 linux-g++ {
     QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
     LIBS += -lgcov
+
+    # Also enable threading for g++
+    QMAKE_CXXFLAGS += -pthread
+    LIBS += -pthread
 }
 
 # Run the unit tests after successful linking
