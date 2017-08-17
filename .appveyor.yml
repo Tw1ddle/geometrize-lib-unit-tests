@@ -34,3 +34,4 @@ before_build:
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - '%make%'
+  - unit_test.exe

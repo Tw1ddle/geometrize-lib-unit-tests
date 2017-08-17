@@ -36,16 +36,15 @@ install:
   - sudo apt-get install -qq g++-5
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
 
-# Build and run the unit tests
 script:
+  # Build and run the unit tests
   - qmake unit_test.pro
   - make
   - ./unit_test
-  - find ${PWD} -type f
+  # Run gcov
   - chmod +x ./get_code_cov.sh
   - ./get_code_cov.sh
-  - find ${PWD} -type f
 
 # Publish code coverage results
-after_success: 
+after_success:
   - bash <(curl -s https://codecov.io/bash)
