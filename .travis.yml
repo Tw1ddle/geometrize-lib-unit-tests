@@ -46,5 +46,6 @@ script:
   - ./get_code_cov.sh
 
 # Publish code coverage results
+# Note that until codecov supports submodules, these results will be wrong/empty
 after_success:
   - bash <(curl -s https://codecov.io/bash)
