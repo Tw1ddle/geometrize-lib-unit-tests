@@ -9,16 +9,6 @@ include($$PWD/geometrize-lib/geometrize/geometrize.pri)
 SOURCES += unit/main.cpp \
            $$files(unit/tests/*.cpp, true)
 
-# Link in gcov for linux builds (for codecov coverage)
-unix {
-    QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
-    LIBS += -lgcov
-
-    # Also enable threading for g++
-    QMAKE_CXXFLAGS += -pthread
-    LIBS += -pthread
-}
-
 # Run the unit tests after successful linking
 isEmpty(TARGET_EXT) {
     win32 {
