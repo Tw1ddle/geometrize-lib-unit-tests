@@ -12,8 +12,9 @@
 
 TEST_CASE("Test default image runner shape scoring is sane", "[imagerunner]")
 {
-    const geometrize::Bitmap bitmap(50, 50, geometrize::rgba{255, 255, 255, 255});
-    geometrize::ImageRunner runner(bitmap, bitmap);
+    const geometrize::Bitmap startBitmap(50, 50, geometrize::rgba{255, 255, 255, 255});
+    const geometrize::Bitmap targetBitmap(50, 50, geometrize::rgba{0, 0, 0, 255});
+    geometrize::ImageRunner runner(startBitmap, targetBitmap);
 
     const geometrize::ImageRunnerOptions options{};
 
@@ -24,13 +25,13 @@ TEST_CASE("Test default image runner shape scoring is sane", "[imagerunner]")
         std::move(shapes.begin(), shapes.end(), std::back_inserter(results));
     }
 
-    std::vector<float> scores;
-    REQUIRE(results.size() == stepCount);
+    std::vector<double> scores;
+    REQUIRE(results.size() != 0); // NOTE: results.size() not necessarily equal to stepCount, because it is possible to match a single block of colour in less than stepCount iterations
     for(const auto& result : results) {
-        REQUIRE(result.score >= 0.0f);
-        REQUIRE(result.score <= 1.0f);
+        REQUIRE(result.score >= 0.0);
+        REQUIRE(result.score <= 1.0);
         scores.push_back(result.score);
     }
 
-    REQUIRE(std::is_sorted(scores.begin(), scores.end(), std::less<float>()));
+    REQUIRE(std::is_sorted(scores.begin(), scores.end(), std::greater<double>()));
 }
