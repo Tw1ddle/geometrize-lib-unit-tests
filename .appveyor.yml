@@ -34,3 +34,22 @@ before_build:
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - '%make%'
+
+ # TODO - fix travis
+#before_install:
+## Get the latest version of the Geometrize library submodule, and push it to the remote (if necessary)
+#- chmod +x ./travis_update_geometrize_submodule.sh
+#- ./travis_update_geometrize_submodule.sh
+## Coverity Scan
+#- echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+# Install g++
+#addons:
+#  coverity_scan:
+#    project:
+#      name: "Tw1ddle/geometrize-lib-unit-tests"
+#      description: "Travis build bot submitting Coverity build"
+#    notification_email: samcodesit@gmail.com
+#    build_command_prepend: "qmake unit_test.pro"
+#    build_command: "make"
+#    branch_pattern: master
