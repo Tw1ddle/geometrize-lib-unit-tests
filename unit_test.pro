@@ -21,10 +21,17 @@ isEmpty(TARGET_EXT) {
     TARGET_CUSTOM_EXT = $${TARGET_EXT}
 }
 
-CONFIG(debug, debug|release) {
-    TARGET_DIR = $$shell_path($${OUT_PWD}/debug)
-} else {
-    TARGET_DIR = $$shell_path($${OUT_PWD}/release)
+# For some reason the executables are placed in debug/release folders on Windows (MSVC)
+# but in one directory up on Linux (gcc)
+win32 {
+    CONFIG(debug, debug|release) {
+        TARGET_DIR = $$shell_path($${OUT_PWD}/debug)
+    } else {
+        TARGET_DIR = $$shell_path($${OUT_PWD}/release)
+    }
+}
+unix {
+    TARGET_DIR = $$shell_path($${OUT_PWD}/)
 }
 
 win32 {
