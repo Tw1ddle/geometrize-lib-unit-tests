@@ -15,7 +15,7 @@ isEmpty(TARGET_EXT) {
         TARGET_CUSTOM_EXT = .exe
     }
     macx {
-        TARGET_CUSTOM_EXT = .app
+        #TARGET_CUSTOM_EXT = .app # Seems like no file extension is added
     }
 } else {
     TARGET_CUSTOM_EXT = $${TARGET_EXT}
