@@ -1,7 +1,7 @@
 [![Geometrize unit tests logo](https://github.com/Tw1ddle/geometrize-lib-unit-tests/blob/master/screenshots/logo.png?raw=true "Geometrize - library for geometrizing images into geometric primitives unit tests logo")](https://www.geometrize.co.uk/)
 
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/geometrize-lib-unit-tests/blob/master/LICENSE)
-[![AppVeyor Unit Test Build Status](https://ci.appveyor.com/api/projects/status/github/Tw1ddle/geometrize-lib-unit-tests?branch=master&svg=true)](https://ci.appveyor.com/project/Tw1ddle/geometrize-lib-unit-tests)
+[![Build Status Badge](https://ci.appveyor.com/api/projects/status/github/Tw1ddle/geometrize-lib-unit-tests)](https://ci.appveyor.com/project/Tw1ddle/geometrize-lib-unit-tests)
 
 This is the unit test suite for the [Geometrize](https://www.geometrize.co.uk/) library, a tool for geometrizing images into geometric primitives. The intent is to achieve good test coverage of the codebase, and to add regression tests for fixed bugs.
 
