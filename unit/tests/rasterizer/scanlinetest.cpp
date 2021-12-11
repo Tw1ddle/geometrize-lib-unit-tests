@@ -19,7 +19,7 @@ TEST_CASE("Test trimming scanlines", "[scanline]")
     for(int i = 0; i < 20; i++) {
         scanlines.push_back(geometrize::Scanline(i, i, i * 2));
     }
-    std::vector<geometrize::Scanline> trimmedLines = geometrize::trimScanlines(scanlines, 100, 100);
+    std::vector<geometrize::Scanline> trimmedLines = geometrize::trimScanlines(scanlines, 0, 0, 100, 100);
 
     REQUIRE(scanlines.size() == trimmedLines.size());
     for(int j = 0; j < scanlines.size(); j++) {
